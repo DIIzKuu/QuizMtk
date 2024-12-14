@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz Matematika</title>
+  
+      <!---- css Style ---->
+   
+  <style>
+  
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+  
+  p {
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 390;
+  }
+  h1,h2, h3, h4{
+    font-family: "PT Serif", serif;
+    font-weight: 560;
+  }
+  
+  
+  
+  
+  html,body{
+    height: 100vh;
+     background-color: #b1b8c6;
+     display: grid;
+     justify-content: center;
+     align-content: center;
+}
+   *{
+     margin: 0px;
+     padding: 0px;
+  }
+   
+  .isi{
+    background-image: linear-gradient(263deg, #dfb9da 3%, #bdddd2);
+    text-align: center;
+    border-radius: 5px;
+    border: 1px Solid black;
+    width: 250px;
+    height: 300px;
+    margin: 0 auto;
+}
+  .isia{
+    margin : 8px auto 5px auto;
+}
+  .subt{
+    padding: 10px;
+    border-radius: 5px 5px 0px 0px;
+    /*background-color: lightblue;*/
+    background-image: linear-gradient(180deg, #c7c7c7, #a29f9f);
+    text-align: center;
+}
+  #bungkus{
+    margin : auto auto 60% auto;
+}
+  .scores{
+    margin: 30px auto 2px auto;
+    display: flex;
+    justify-content: center;
+    gap : 1px;
+}
+  .sKe1{
+      display: flex;
+      margin-right: 10px;
+      gap : 3px;
+}
+    .sKe2{
+      display: flex;
+      margin-left: 10px;
+      gap : 3px;
+}
+  .inputan{
+    margin-top: 5px;
+    margin-left: 8px;
+    text-align: left;
+}
+  .aInput{
+    display: flex;
+    margin: 8px auto;
+    justify-content: center;
+    gap: 15px;
+}
+  #inPutt{
+    width: 145px;
+    height: 25px;
+    border: none;
+    font-size: 13px;
+    outline: 2px solid #92b2f1;
+    border-radius: 3px;
+    padding-left: 5px;
+    background: transparent;
+}
+  .oke-C{
+    color: gray;
+    width: 45px;
+    height: 25px;
+    border-radius: 4px;
+    border-color: #92b2f1;
+}
+  .Isoal{
+    margin-top: 20px;
+    margin-left: 15px;
+    display: flex;
+}
+  .spasR{
+    margin-right: 3px;
+}
+  .spasL{
+    margin-left: 3px;
+}
+  #hasil{
+    font-size: 14px;
+}
+  #satuanWaktu{
+    margin-top: 0.2px;
+    font-size: 12px;
+}
+
+  .container-alert{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .alert-box{
+    background-color: white;
+    border: 1.6px solid #5c6983;
+    box-shadow: 3px 3px 10px #464971;
+    border-radius: 6px 3px 6px 3px;
+    padding: 10px;
+  /*  height: 5.4em;*/
+    height: auto;
+    width: 13em;
+  }
+  .alert-box h1{
+    color: white;
+    display: inline;
+    border: 1.3px solid #5c6983;
+    border-radius: 8px;
+    padding: 1px 4px 1px 4px;
+    background-color: #464971;
+    font-size: 24px;
+    position: relative;
+    bottom: 23px;
+    right: 1px;
+  }
+  
+  .alert-box button{
+    border-radius: 4px;
+    outline: 1.2px solid #4e5b76;
+    border: none;
+    padding: 4px 7px;
+    margin: 3px 2px 6px 2px;
+    background-color: #909eba;
+    position: relative;
+    top: 8px;
+    left: 116px;
+  }
+  .alert-box p{
+    position: relative;
+    bottom: 10px;
+  }
+  .alert-box #alertContent1{
+    bottom: 3px;
+    color: #169c32;
+  }
+  #peringatan{
+  color: red;
+  display: none;
+  text-align: justify;
+  position: relative;
+  top: 22px;
+  left: 10px;
+  }
+  
+  </style>
+</head>
+<body>
+  
+      <!---- Structure Html ---->
+  
+  <div id="bungkus">
+    <div class="isi">
+      <h2 class="subt">Quiz Matematika</h2>
+      <div class="isia">
+        <p>Kumpulkan poin sebayak mungkin, dengan menjawab soal berikut.</p>
+      </div>
+      <div class="scores">
+        <div class="sKe1">
+         <h4>Poin :</h4>
+         <h4 id="poin">0</h4>
+        </div>
+        <div class="sKe2">
+         <h4>Waktu :</h4>
+         <h4 id="waktu">3</h4>
+        </div>
+         <h4 id="satuanWaktu">min</h4>
+      </div>
+      <div class="inputan">
+        <div class="Isoal">
+         <h4 id ="nO">No1.</h4>
+         <p id="s1" class="spasL">err</p> <p class="spasL spasR">+</p>
+         <p id="s2">err</p> <p class="spasL">=</p>
+         <p class="spasL" id="hasil"></p>
+        </div>
+      </div>
+      <div class="aInput">
+        <input type="number" id="inPutt" placeholder="Jawab.." required="">
+       <button style="display:block" type="button" class="oke-C" id="tombol">Kirim</button>
+       <button onclick="korup()"style="display:none" class="oke-C" id="b-ct">Kirim</button>
+      </div>
+       <div id="peringatan">
+         <p>-Refresh atau pencet Kirim-</p>
+      </div>
+    </div>
+    <div class="container-alert" id="alertCustom">
+      <div class="alert-box">
+        <h1 id="alertTitle">Hasil kamu</h1>
+        <p id="alertContent">ke1</p>
+        <p id="alertContent1">ke2</p>
+        <button onclick="alertUlang()">Ulang</button>
+        <button onclick="alertOke()">Oke</button>
+      </div>
+    </div>
+    
+  </div>
+  
+      <!---- JavaScrip ---->
+      
+  <script>
+    const output = document.getElementById("hasil");
+    const input = document.getElementById("inPutt");
+    const inTombol = document.getElementById("tombol");
+    const inPalsu = document.getElementById("b-ct");
+    const inNo = document.getElementById("nO");
+    const poins = document.getElementById("poin");
+    const dWaktu = document.getElementById("waktu");
+    const dMD = document.getElementById("satuanWaktu");
+    const s1 = document.getElementById("s1");
+    const s2 = document.getElementById("s2");
+    
+    var no = 1;
+    var poin = 0;
+    var a = 0
+    var b = 0
+    var plus= 0
+    rPlus()
+    waktuTunda()
+    var waktu = 179; // 179 normal jawab min 100 22soal
+    var peWaktuan = false;
+    var nilay = [];
+    console.log(nilay);
+    
+    function waktuTunda (){
+      if (peWaktuan && waktu >= 9){
+        dMD.style.color = "#705884"
+      } else {
+        if (waktu <= 9){
+          dMD.style.color = "#b48735"
+        }
+      }
+      setTimeout(() => {
+        if (peWaktuan && waktu >= 9){
+          dMD.style.color = "#9d7aba"
+      } else {
+        if (waktu <= 9){
+          dMD.style.color = "#a38f6b"
+        }
+      }
+        setTimeout(() => { 
+         if (peWaktuan){
+           dMD.innerHTML = 'sec'
+           dWaktu.innerHTML = waktu
+           waktu -= 1;
+           if (waktu <= 2){
+             inTombol.style.display = "none";
+             inPalsu.style.display = "block";
+           }
+          }
+         if (waktu < 0){
+           if (peWaktuan){
+               //Hitung nilai keseluruhan
+               nilay = [
+                 poin,  //0 benar
+                 no - 1,  //1 soal
+                 no - poin -1, //2 salah
+                 1  //3 Hasil + pembulatan 100 = 16poil
+                ];
+                
+               nilay[3] = Math.round(nilay[0]  / 16 * 100);
+               console.log(nilay);
+               if (nilay[3] > 100){
+                 nilay[3] = 100
+               }
+               console.log(nilay);
+               
+               //aler custim by Dizz
+               setTimeout(()=>{
+                 cAlert(
+                  "My Score"
+                  ,
+                  "Menjawb " + nilay[1] + " soal, dengan " + nilay[0] + " soal beran dan " + nilay[2] + " soal salah.. Untuk No" + no + ". itu belum dijawb yh beb, Buakn bug..  Nilai = " + nilay[3]
+                  ,
+                  " • IntiNya " + nilay[1] + " soal Terjawab. "  + nilay[0] + " beran dan " + nilay[2] + " salah, Hasil dari penilayan kami.. Nilai = " + nilay[3] + "/100"
+                 );
+               },60);
+            }
+            peWaktuan = false;
+            waktu = 0;
+            dMD.innerHTML = 'min'
+          }
+        waktuTunda()
+        }, 500);
+      }, 500);
+    }
+    
+    function rPlus(){
+      a = Math.floor( Math.random()*230)+1;
+      b = Math.floor( Math.random()*230)+1;
+      plus = a + b
+      s1.innerHTML = a
+      s2.innerHTML = b
+    }
+    
+    function cAlert (satu, dua, tiga){
+      document.getElementById("alertTitle").innerHTML = satu
+      document.getElementById("alertContent").innerHTML = dua
+      document.getElementById("alertContent1").innerHTML = tiga
+      document.getElementById("alertCustom").style.display = "flex";
+      document.getElementById("peringatan").style.display = "block";
+    }
+    
+    function alertOke (){
+      document.getElementById("alertCustom").style.display = "none";
+      setTimeout(()=>{
+        inPalsu.style.display = "none";
+        inTombol.style.display = "block";
+      }, 720);
+    }
+    
+    function alertUlang (){
+      document.getElementById("alertCustom").style.display = "none";
+      setTimeout(()=>{
+      window.location.reload();
+      }, 500);
+    }
+    
+    function korup (){
+      output.innerHTML = "Maaf ketua ambil 2dtk telakhir"
+    }
+    
+    inTombol.addEventListener('click', function (){
+      let inCount = input.value.length;
+      let inVal = input.value;
+
+      inTombol.disabled = true;
+      setTimeout(() => {
+        if (waktu != 0 && inCount > 0){
+          no ++;
+          inNo.innerHTML = "No"+no+".";
+          rPlus()
+          peWaktuan = true
+          input.value = "";
+        }
+        if (waktu != 0){
+        inTombol.disabled = false;
+        inTombol.textContent = "Kirim"
+        output.innerHTML = ""
+        } else {
+          if (waktu <= 0){
+            setTimeout(()=>{
+              inTombol.disabled = false;
+              inTombol.textContent = "Kirim"
+              output.innerHTML = ""
+              input.value = ""
+              cAlert(
+                 "-Back"
+                 ,
+                 "pencet tombol oke, untik mengabaikan..  pencet tombol ulang, untuk memulai ulang."
+                  ,
+                  "Nilai = " + nilay[3] + "/100... Dengan " + nilay[1] + "soal Terjawab, " + nilay[0] + "beran dan " + nilay[2] + "salah.."
+              )
+            }, 2500);
+          }
+        }
+         
+      }, 1400); // normal 1400
+      
+      if (inCount <= 0 && waktu > 0){
+        inTombol.textContent = "Jawab?"
+        output.innerHTML = "Kok dikosongin!!"
+        output.style.color = "#cb2c2c"
+        inTombol.style.color = "#cb2c2c";
+        setTimeout(() => {
+        inTombol.style.color = "gray";
+        }, 1000);
+      } else {
+        if (waktu == 0){
+          inTombol.textContent = "Waktu?"
+          output.innerHTML = "Waktu habis beb"
+          output.style.color = "#ff1212"
+          inTombol.style.color = "#ff1212";
+          setTimeout(() => {
+          inTombol.style.color = "gray";
+          }, 3800);
+        } else {
+          if (plus == inVal ){
+            inTombol.textContent = "Benar"
+            inTombol.style.color = "#24ad51";
+            output.innerHTML = plus;
+            output.style.color = "#24ad51"
+            setTimeout(() => {
+            inTombol.style.color = "gray";
+            }, 1000);
+            poin += 1;
+            poins.innerHTML = poin
+          } else {
+              inTombol.textContent = "Salah"
+              inTombol.style.color = "#ff1212";
+              output.innerHTML = plus + " bukan " + inVal;
+              output.style.color = "#ff1212"
+              setTimeout(() => {
+              inTombol.style.color = "gray";
+              }, 1000);
+          }
+        }
+      }
+    });
+    
+  </script>
+</body>
+  </html>
